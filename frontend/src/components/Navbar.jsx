@@ -2,7 +2,7 @@ import React, { use,useContext,useState } from 'react'
 import {assets} from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
-const Navbar = () => {
+const Navbar = ({ showThemeToggle = false, isDark = false, onToggleTheme }) => {
 
     const [visible,setVisible]=useState(false);
     const {setShowSearch,getCartCount,navigate,token,setToken,setCartItems}=useContext(ShopContext)
@@ -74,6 +74,24 @@ const Navbar = () => {
             <p className='absolute right-[-5px] bottom-[-4px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</p>
 
             </Link>
+                        {showThemeToggle && (
+                            <button
+                                type="button"
+                                aria-label="Toggle dark mode"
+                                onClick={onToggleTheme}
+                                className="relative flex items-center w-12 h-6 rounded-full bg-slate-700 dark:bg-slate-800 transition-colors"
+                            >
+                                <span
+                                    className={`absolute left-1 top-1 w-4 h-4 rounded-full bg-gray-400 transition-transform ${isDark ? 'translate-x-6 bg-blue-400' : 'translate-x-0'}`}
+                                />
+                                <span className="absolute right-1 top-1 w-4 h-4 text-blue-300">
+                                    {/* Inline moon icon */}
+                                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z" />
+                                    </svg>
+                                </span>
+                            </button>
+                        )}
             <img onClick={()=>setVisible(true)} src={assets.menu_icon} className='w-5 cursor-pointer sm:hidden' />
         </div>
         {/* Sidebar menu for small screens */}
