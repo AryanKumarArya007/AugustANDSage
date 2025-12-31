@@ -22,7 +22,7 @@ const Navbar = ({ showThemeToggle = false, isDark = false, onToggleTheme }) => {
   return (
     <div className='flex items-center justify-between py-5 font-medium'>
       
-      <Link to='/'>  <img src={assets.company_logo2} className='w-40 h-27' alt="" /></Link>
+    <Link to='/'>  <img src={assets.company_logo2} className='w-40 h-27 filter dark:invert' alt="" /></Link>
 
         <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
             <NavLink to='/' className='flex flex-col items-center gap-1'>
@@ -51,17 +51,17 @@ const Navbar = ({ showThemeToggle = false, isDark = false, onToggleTheme }) => {
             
         </ul>
         <div className='flex items-center gap-6'>
-           <img onClick={()=>setShowSearch(true)} src={assets.search_icon} className='w-6 cursor-pointer' />
+           <img onClick={()=>setShowSearch(true)} src={assets.search_icon} className='w-6 cursor-pointer filter dark:invert' />
 
             <div className='group relative'>
-               <img onClick={()=>token ?null: navigate('/login')} className='w-8 cursor-pointer' src={assets.profile_icon1} alt="" />
+               <img onClick={()=>token ?null: navigate('/login')} className='w-8 cursor-pointer filter dark:invert' src={assets.profile_icon1} alt="" />
                {/* {dropdown menu} */}
                {token && 
                <div  className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
-                    <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500  rounded'>
-                        <p  className='cursor-pointer hover:text-black'>My Profile</p>
-                        <p onClick={()=>navigate('/orders')} className='cursor-pointer hover:text-black'>Orders</p>
-                        <p  onClick={logout} className='cursor-pointer hover:text-black'> Logout</p>
+                    <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-700 rounded dark:bg-slate-800 dark:text-white shadow-lg'>
+                        <p  className='cursor-pointer hover:text-black dark:hover:text-gray-200'>My Profile</p>
+                        <p onClick={()=>navigate('/orders')} className='cursor-pointer hover:text-black dark:hover:text-gray-200'>Orders</p>
+                        <p  onClick={logout} className='cursor-pointer hover:text-black dark:hover:text-gray-200'> Logout</p>
                     </div>
                     
                 </div> }
@@ -70,7 +70,7 @@ const Navbar = ({ showThemeToggle = false, isDark = false, onToggleTheme }) => {
                 
             </div>
             <Link to='/cart' className='relative'>
-            <img src={assets.cart_icon} className='w-8 min-w-5' alt="" />
+            <img src={assets.cart_icon} className='w-8 min-w-5 filter dark:invert' alt="" />
             <p className='absolute right-[-5px] bottom-[-4px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</p>
 
             </Link>
@@ -92,13 +92,13 @@ const Navbar = ({ showThemeToggle = false, isDark = false, onToggleTheme }) => {
                                 </span>
                             </button>
                         )}
-            <img onClick={()=>setVisible(true)} src={assets.menu_icon} className='w-5 cursor-pointer sm:hidden' />
+            <img onClick={()=>setVisible(true)} src={assets.menu_icon} className='w-5 cursor-pointer sm:hidden filter dark:invert' />
         </div>
         {/* Sidebar menu for small screens */}
         <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full': 'w-0'}`}>
             <div className='flex flex-col text-gray-600'>
                 <div onClick={()=>setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
-                    <img className='h-4 rotate-180' src={assets.dropdown_icon} alt='' />
+                    <img className='h-4 rotate-180 filter dark:invert' src={assets.dropdown_icon} alt='' />
                     <p>Back</p>
 
                 </div>
