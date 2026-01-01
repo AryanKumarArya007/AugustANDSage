@@ -1,11 +1,12 @@
 import React, { use,useContext,useState } from 'react'
 import {assets} from '../assets/assets'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 const Navbar = ({ showThemeToggle = false, isDark = false, onToggleTheme }) => {
 
     const [visible,setVisible]=useState(false);
     const {setShowSearch,getCartCount,navigate,token,setToken,setCartItems}=useContext(ShopContext)
+    const location = useLocation();
 
     const logout=()=>{
         navigate('/login')
@@ -50,8 +51,18 @@ const Navbar = ({ showThemeToggle = false, isDark = false, onToggleTheme }) => {
             </NavLink>
             
         </ul>
-        <div className='flex items-center gap-6'>
-           <img onClick={()=>setShowSearch(true)} src={assets.search_icon} className='w-6 cursor-pointer filter dark:invert' />
+                <div className='flex items-center gap-6'>
+                     <img
+                         onClick={() => {
+                             if (location.pathname === '/') {
+                                 navigate('/collection', { state: { openSearch: true } });
+                             } else {
+                                 setShowSearch(true);
+                             }
+                         }}
+                         src={assets.search_icon}
+                         className='w-6 cursor-pointer filter dark:invert'
+                     />
 
             <div className='group relative'>
                <img onClick={()=>token ?null: navigate('/login')} className='w-8 cursor-pointer filter dark:invert' src={assets.profile_icon1} alt="" />
