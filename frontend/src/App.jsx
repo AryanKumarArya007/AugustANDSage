@@ -43,6 +43,11 @@ const App = () => {
     }
   }, [isDark]);
 
+  // Scroll to top on route change (ensures footer links land at top)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
   const toggleTheme = () => setIsDark(v => !v);
   const showToggle = location.pathname === '/';
 
