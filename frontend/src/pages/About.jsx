@@ -147,7 +147,7 @@ const About = () => {
           </p>
         </div>
       </div>
-      <div className="bg-neutral-50 py-16">
+      <div className="bg-neutral-50 dark:bg-transparent py-16">
         <InfiniteMovingCards items={testimonials} />
       </div>
       <NewsletterBox />
