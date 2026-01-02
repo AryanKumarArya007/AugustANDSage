@@ -9,6 +9,7 @@ import Login from "./pages/Login"
 import Orders from "./pages/Orders"
 import PlaceOrder from "./pages/PlaceOrder"
 import Product from "./pages/Product"
+import PrivacyPolicy from './pages/PrivacyPolicy'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
@@ -61,6 +62,7 @@ const App = () => {
         <Route path='/place-order' element={<PlaceOrder/>}/>
         <Route path='/product/:productId' element={<Product/>}/>
         <Route path='/verify' element={<Verify/>}/>
+          <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
      </Routes>
      <Footer/>
     </div>
