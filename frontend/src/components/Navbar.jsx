@@ -92,11 +92,20 @@ const Navbar = ({ showThemeToggle = false, isDark = false, onToggleTheme }) => {
                                 onClick={onToggleTheme}
                                 className="relative flex items-center w-12 h-6 rounded-full bg-slate-700 dark:bg-slate-800 transition-colors"
                             >
+                                {/* Sun icon on the left */}
+                                <span className={`absolute left-1 top-1 w-4 h-4 text-yellow-400 transition-opacity ${isDark ? 'opacity-60' : 'opacity-100'}`}>
+                                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm0 4a1 1 0 0 1-1-1v-1.25a1 1 0 1 1 2 0V21a1 1 0 0 1-1 1Zm0-18a1 1 0 0 1-1-1V1.75a1 1 0 1 1 2 0V3a1 1 0 0 1-1 1Zm9 9a1 1 0 0 1-1 1h-1.25a1 1 0 1 1 0-2H20a1 1 0 0 1 1 1ZM6.25 12a1 1 0 0 1-1 1H4a1 1 0 1 1 0-2h1.25a1 1 0 0 1 1 1Zm11.78 6.53a1 1 0 0 1-1.41 1.41l-.88-.88a1 1 0 1 1 1.41-1.41l.88.88Zm-11.24-11.3a1 1 0 1 1-1.41-1.41l.88-.88a1 1 0 0 1 1.41 1.41l-.88.88Zm11.3-2.06.88-.88a1 1 0 1 1 1.41 1.41l-.88.88a1 1 0 1 1-1.41-1.41ZM6.47 17.03l-.88.88a1 1 0 1 1-1.41-1.41l.88-.88a1 1 0 1 1 1.41 1.41Z" />
+                                    </svg>
+                                </span>
+
+                                {/* Knob */}
                                 <span
                                     className={`absolute left-1 top-1 w-4 h-4 rounded-full bg-gray-400 transition-transform ${isDark ? 'translate-x-6 bg-blue-400' : 'translate-x-0'}`}
                                 />
-                                <span className="absolute right-1 top-1 w-4 h-4 text-blue-300">
-                                    {/* Inline moon icon */}
+
+                                {/* Moon icon on the right */}
+                                <span className={`absolute right-1 top-1 w-4 h-4 text-blue-300 transition-opacity ${isDark ? 'opacity-100' : 'opacity-60'}`}>
                                     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z" />
                                     </svg>
