@@ -54,10 +54,12 @@ const Navbar = ({ showThemeToggle = false, isDark = false, onToggleTheme }) => {
                 <div className='flex items-center gap-6'>
                      <img
                          onClick={() => {
-                             if (location.pathname === '/') {
-                                 navigate('/collection', { state: { openSearch: true } });
-                             } else {
+                             // If already on collection, just open the search bar.
+                             // Otherwise, redirect to collection and request it to open.
+                             if (location.pathname === '/collection') {
                                  setShowSearch(true);
+                             } else {
+                                 navigate('/collection', { state: { openSearch: true } });
                              }
                          }}
                          src={assets.search_icon}
